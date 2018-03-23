@@ -1,0 +1,1 @@
+println("I hate dynamically typed languages")
