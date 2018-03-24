@@ -59,7 +59,24 @@ println("My first function evaluated on 3 and 4 produces p(3,4) = $(p(3,4))")
 
 # the rest is essentially python
 
+# dot syntax on arbitrary functions
+
+function addOne(x)
+    x + 1
+end 
+
+# auto vectorize
+arr = [1,2,3]
+Y   = [0,0,0]
+@. Y = addOne(arr)
+
+println("Vectorizing addOne results in ",Y, " but here Y had to be of the right form") 
+
+println("Applying the addOne elementWise produces ", addOne.([1,2,3]))
+
 # leaky ifs seem like a bad idea
 # rust like ifs are expressions
 
 # you can define your own primitive types - this sounds good.
+
+
