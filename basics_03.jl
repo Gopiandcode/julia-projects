@@ -79,4 +79,64 @@ println("Applying the addOne elementWise produces ", addOne.([1,2,3]))
 
 # you can define your own primitive types - this sounds good.
 
+# easy syntactic sugar for type assertions at runtime
+x = (1 + 2)::Int64
+
+# almost-static typing for variables - except at runtime
+
+function fx(x)
+    this_is_an_int::Int = 12
+    this_is_an_int + 1
+end
+
+# subtype checking
+is_sub = Integer <: Number
+println("Is integer a subtype of number ", is_sub)
+
+
+# custom primitive type instantiation
+primitive type Kiran <: Unsigned 16 end
+
+# composite types
+
+struct Composite
+    anyTypeField
+    specifiedTypeField::Int
+end
+
+
+println(Composite("Example", 10))
+println(fieldnames(Composite))
+
+# structs are immutable
+
+# mutable structs are mutable - passed around like real class objects
+mutable struct Awesome
+    anyTypeField
+    specifiedTypeField::Int
+end
+
+
+# damn we're going full c here - unions
+EitherOr = Union{Awesome, Int}
+
+
+# parametric adts - makes it better than go
+struct ParametricComposite{T}
+    x::T
+    y::T
+end
+
+
+# parametric functions
+function norm(p::ParametricComposite{<:Real})
+    sqrt(p.x^2 + p.y^2)
+end
+
+
+# no none object - better than python - uses a frikken monad instead
+
+
+
+
 
